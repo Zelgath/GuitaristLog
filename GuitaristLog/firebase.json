@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "GuitaristLog",
+      "public": "dist/GuitaristLog",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}
