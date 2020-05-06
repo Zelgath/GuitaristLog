@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
   declarations: [DashboardComponent, LoginComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [DashboardComponent]
 })
 export class CoreModule { }
