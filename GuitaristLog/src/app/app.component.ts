@@ -8,9 +8,5 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  items: Observable<any[]>;
-  constructor(firestore: AngularFirestore) {
-    this.items = firestore.collection('items').valueChanges();
-  }
-  title = 'GuitaristLog';
+
 }
