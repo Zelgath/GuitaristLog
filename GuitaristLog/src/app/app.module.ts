@@ -7,6 +7,8 @@ import {AngularFireModule } from '@angular/fire/';
 import { environment } from 'src/environments/environment';
 import { FireToolsModule } from './fire-tools/fire-tools.module';
 import { MaterialModule } from './material/material.module';
+import { CoreModule } from './core/core.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MaterialModule } from './material/material.module';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebase),
     FireToolsModule,
-    MaterialModule
+    MaterialModule,
+    CoreModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

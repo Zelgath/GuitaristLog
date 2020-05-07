@@ -43,6 +43,7 @@
             "styles": [
               "src/custom-theme.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/material-design-icons/iconfont/material-icons.css",
               "src/styles.less"
             ],
             "scripts": []

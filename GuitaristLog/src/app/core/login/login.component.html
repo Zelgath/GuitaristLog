@@ -1,1 +1,38 @@
-<p>login works!</p>
+<div class="container login-container shadow">
+    <div class="row header">
+        <div class="col-1">
+            <mat-icon class="note-logo">music_note</mat-icon>
+        </div>
+        <div class="col-9">
+            <p class="title-text">Login or register</p>
+        </div>
+    </div>
+    <div class="row input">
+        <div class="col-12">
+            <mat-form-field [style.width.px]=470>
+                <input matInput placeholder="Email" [(ngModel)]="credentials.email" required>
+                <mat-error>Email is required</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row input">
+        <div class="col-12">
+            <mat-form-field [style.width.px]=470>
+                <input matInput placeholder="Password" [(ngModel)]="credentials.password" required>
+                <mat-error>Password is required</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row button-row">
+        <div class="col-12 text-center">
+            <button mat-raised-button color="primary" [style.width.px]=235 [style.height.px]=40 
+            (click)="login()">LOG IN</button>
+        </div> 
+    </div>
+    <div class="row register">
+        <div class="col-12 text-center">
+            <p>You don't have an account?</p>
+            <button mat-raised-button color="accent">REGISTER</button>
+        </div>
+    </div>  
+</div>
