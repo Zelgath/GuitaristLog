@@ -10,9 +10,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDivider } from '@angular/material/divider';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateAdapterOptions } from '@angular/material-moment-adapter';
 import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
+import {MatDividerModule} from '@angular/material/divider';
 
 const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
   width: '700px',
@@ -57,7 +58,9 @@ const MATERIAL_MODULES = [
   MatToolbarModule,
   MatDatepickerModule,
   MatMomentDateModule,
-  MatDivider
+  MatSidenavModule,
+  MatCardModule,
+  MatDividerModule
 ];
 
 

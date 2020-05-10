@@ -21,6 +21,10 @@ export class AuthService {
       );
   }
 
+  getUserId(): string {
+    return this.userData.uid;
+  }
+
   logout() {
     return this.fireAuth.signOut();
   }
