@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<mat-toolbar color="primary">
+    <mat-toolbar-row class="header">
+        <div class="col-1">
+            <mat-icon class="open-sidebar">view_list</mat-icon>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="col-5">
+            <i class="fas fa-guitar logo">Guitarist Log</i>
+        </div>
+        <div class="col-5">
+            <span class="user-login float-right">Hello, {{ user?.email }}</span>
+        </div>
+        <div class="col-1">
+            <mat-icon>power_settings_new</mat-icon>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

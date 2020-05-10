@@ -13,10 +13,12 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: '', redirectTo: 'songs', pathMatch: 'full' },
-      { path: 'songs', canLoad: [AuthGuard], loadChildren: () => import ('./songs/songs.module').then(m => m.SongsModule) },
+      { path: 'songs', loadChildren: () => import ('./songs/songs.module').then(m => m.SongsModule) },
     ]
   }
 ];
+
+//, canLoad: [AuthGuard]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
