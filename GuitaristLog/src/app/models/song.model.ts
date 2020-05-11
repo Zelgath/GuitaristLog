@@ -4,4 +4,5 @@ export interface Song {
     name: string;
     creator: string;
     text: string;
+    public: boolean;
 }

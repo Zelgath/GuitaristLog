@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>New Song Creator</h2>
+<mat-dialog-content>
+    <form [formGroup]="songForm">
+        <div class="row">
+            <div class="col-8">
+                <mat-form-field>
+                    <input matInput formControlName="name" placeholder="Name">
+                    <mat-error *ngIf="songForm.get('name').hasError('required')">Song name is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-slide-toggle formControlName="public" color="primary">Public</mat-slide-toggle>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <mat-form-field>
+                    <input matInput formControlName="author" placeholder="Author">
+                    <mat-error *ngIf="songForm.get('author').hasError('required')">Author name is required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-slide-toggle formControlName="learned" color="primary">Learned</mat-slide-toggle>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <div class="row">
+        <div class="column">
+            <button mat-raised-button color="accent" mat-dialog-close>Cancel</button>
+            <button mat-raised-button color="primary" [disabled]="songForm.invalid"
+             (click)="createSong()">Create</button>
+        </div>
+    </div>
+</mat-dialog-actions>

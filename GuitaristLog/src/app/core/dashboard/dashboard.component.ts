@@ -23,7 +23,6 @@ logout() {
 
 toggleDrawer() {
   this.drawer.toggle();
-  console.log(this.drawer);
 }
 
 }

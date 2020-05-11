@@ -22,10 +22,16 @@ export class UserBankService {
       );
   }
 
-
   // getUserBank(): Observable<UserBank> {
   //   return this.db.object<UserBank>(`${this.API_URL}/${this.authService.getUserId()}`).snapshotChanges()
   //   .pipe(map(userBank => this.assignKey(userBank)));
+  // }
+
+  editUserBank(uid: string, userBank: UserBank) {
+    return this.db.object<UserBank>(`${this.API_URL}/${this.uidForTest}`).update(userBank);
+  }
+  // editUserBank(uid: string, userBank: UserBank) {
+  //   return this.db.object<UserBank>(`${this.API_URL}/${uid}`).update(userBank);
   // }
 
   private assignKey(userBank) {

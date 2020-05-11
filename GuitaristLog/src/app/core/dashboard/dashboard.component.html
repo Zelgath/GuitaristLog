@@ -13,7 +13,7 @@
                 <span class="user-login float-right">Hello, {{ user?.email }}</span>
             </div>
             <div class="col-1">
-                <mat-icon class="logout-icon">power_settings_new</mat-icon>
+                <mat-icon class="logout-icon" (click)="logout()">power_settings_new</mat-icon>
             </div>
         </mat-toolbar-row>
     </mat-toolbar>

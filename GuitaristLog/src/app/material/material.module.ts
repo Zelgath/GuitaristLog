@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateAdapterOptions } from '@angular/material-moment-adapter';
 import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -60,7 +61,8 @@ const MATERIAL_MODULES = [
   MatMomentDateModule,
   MatSidenavModule,
   MatCardModule,
-  MatDividerModule
+  MatDividerModule,
+  MatSlideToggleModule
 ];
 
 

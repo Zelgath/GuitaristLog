@@ -4,16 +4,20 @@ import { Song } from '../models/song.model';
 import { Observable } from 'rxjs';
 import { UserBankService } from '../core/services/user-bank.service';
 import { switchMap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { NewSongComponent } from './new-song/new-song.component';
 
 @Component({
   selector: 'app-songs',
   templateUrl: './songs.component.html',
   styleUrls: ['./songs.component.less']
 })
-export class SongsComponent implements OnInit {
+export class SongsComponent {
 
   constructor(private songsService: SongsService,
-              private userBankService: UserBankService) { }
+              private userBankService: UserBankService,
+              private dialog: MatDialog) { }
+
   songsToLearn$: Observable<Song[]> = this.userBankService.getUserBank().pipe(
     switchMap(userBank => this.songsService.getFilteredSongs(userBank.learnedSongs))
   );
@@ -21,7 +25,8 @@ export class SongsComponent implements OnInit {
     switchMap(userBank => this.songsService.getFilteredSongs(userBank.songsToLearn))
   );
 
-  ngOnInit(): void {
+  openNewSongModal() {
+    this.dialog.open(NewSongComponent);
   }
 
 }

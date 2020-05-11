@@ -33,6 +33,18 @@ export class SongsService {
     );
   }
 
+  addSong(song: Song) {
+    return this.db.list<Song>(this.API_URL).push(song);
+  }
+
+  editSong(key: string, song: Song) {
+    return this.db.object<Song>(`${this.API_URL}/${key}`).update(song);
+  }
+
+  removeSong(key: string) {
+    return this.db.object<Song>(`${this.API_URL}/${key}`).remove();
+  }
+
   private assignKey(song): Song{
     return { ...song.payload.val(), key: song.key };
   }
