@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SongsService } from 'src/app/core/services/songs.service';
 import { UserBankService } from 'src/app/core/services/user-bank.service';
 import { Song } from 'src/app/models/song.model';
-import { switchMap, tap } from 'rxjs/operators';
+import { switchMap, tap, concat } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UserBank } from 'src/app/models/user-bank.model';
 
 @Component({
   selector: 'app-new-song',
@@ -20,9 +21,12 @@ export class NewSongComponent implements OnInit{
               private formBuilder: FormBuilder,
               private songsService: SongsService,
               private userBankService: UserBankService,
-              private router: Router) { }
+              private router: Router,
+              @Inject(MAT_DIALOG_DATA) private data: UserBank) { }
 
   songForm: FormGroup;
+  newSongKey: string;
+
 
   ngOnInit(): void {
     this.buildForm();
@@ -38,27 +42,27 @@ export class NewSongComponent implements OnInit{
   }
 
   createSong() {
+    const learned: boolean = this.songForm.get('learned').value;
     const newSong: Song = {
       author: this.songForm.get('author').value,
       name: this.songForm.get('name').value,
       public: this.songForm.get('public').value,
       text: 'newText',
       key: null,
-      creator: null
+      creator: this.data.nickName
     };
-    this.userBankService.getUserBank().pipe(
-      tap(userBank => newSong.creator = userBank.nickName),
-      switchMap(() => this.songsService.addSong(newSong).then(
-        song => this.onCreatingSuccess(song.key).bind(this), this.onCreatingFailure.bind(this)
-      )
-      )
-    );
+    console.log(learned);
+    this.songsService.addSong(newSong)
+    .then(snap => this.newSongKey = snap.key)
+    .then(() => learned ? this.data.songsToLearn.push(this.newSongKey) : this.data.learnedSongs.push(this.newSongKey))
+    .then(() => this.userBankService.editUserBank(this.data.uid, this.data))
+    .then(this.onCreatingSuccess.bind(this), this.onCreatingFailure.bind(this));
   }
 
-  private onCreatingSuccess(key: string) {
-    this.toast.open('New Song has been successfully created!', '', {panelClass: 'toast-success'});
+  private onCreatingSuccess() {
     this.close();
-    this.router.navigate(['/dashboard/songs', key]);
+    this.router.navigate(['/dashboard/songs', this.newSongKey]);
+    this.toast.open('New Song has been successfully created!', '', {panelClass: 'toast-success'});
   }
 
   private onCreatingFailure(error) {
