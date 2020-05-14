@@ -15,14 +15,14 @@ export class DashboardComponent {
   constructor(private authService: AuthService,
               private router: Router) { }
 
-logout() {
-  this.authService.logout().then(
-    () => this.router.navigate(['/login'])
-  );
-}
+  logout() {
+    this.authService.logout().then(
+      () => this.router.navigate(['/login'])
+    );
+  }
 
-toggleDrawer() {
-  this.drawer.toggle();
-}
+  toggleDrawer() {
+    this.drawer.toggle();
+  }
 
 }

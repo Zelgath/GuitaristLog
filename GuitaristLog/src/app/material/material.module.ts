@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDialogModule, MatDialogConfig, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_SCROLL_STRATEGY } from '@angular/material/dialog';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from '@angular/material/snack-bar';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatSelectModule } from '@angular/material/select';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMomentDateAdapterOptions, MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
-import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateAdapterOptions } from '@angular/material-moment-adapter';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogConfig, MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarConfig, MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const MAT_DIALOG_GLOBAL_CONFIG: MatDialogConfig = {
   width: '700px',
@@ -31,7 +31,7 @@ const MAT_DATE_ADAPTER_GLOBAL_CONFIG: MatMomentDateAdapterOptions = {
 
 const MAT_DATEPICKER_GLOBAL_CONFIG: MatDateFormats = {
   parse: {
-    dateInput:  'LL',
+    dateInput: 'LL',
   },
   display: {
     dateInput: 'LL',
@@ -75,10 +75,10 @@ const MATERIAL_MODULES = [
   ],
   exports: [...MATERIAL_MODULES],
   providers: [
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: MAT_DIALOG_GLOBAL_CONFIG},
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: MAT_DATE_ADAPTER_GLOBAL_CONFIG},
-    {provide: MAT_DATE_FORMATS, useValue: MAT_DATEPICKER_GLOBAL_CONFIG},
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: MAT_SNACK_BAR_GLOBAL_CONFIG},
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: MAT_DIALOG_GLOBAL_CONFIG },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: MAT_DATE_ADAPTER_GLOBAL_CONFIG },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_DATEPICKER_GLOBAL_CONFIG },
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: MAT_SNACK_BAR_GLOBAL_CONFIG },
   ]
 })
 export class MaterialModule { }

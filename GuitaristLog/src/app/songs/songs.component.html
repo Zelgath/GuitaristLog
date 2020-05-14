@@ -39,7 +39,7 @@
         <form [formGroup]="searchedSongForm">
             <mat-form-field>
                 <input matInput formControlName="name" [matAutocomplete]="auto">
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-autocomplete #auto="matAutocomplete" class="autocomplete" [displayWith]="displayFn">
                     <mat-option *ngFor="let song of foundSongs | async" [value]="song">
                     {{song.name}}
                     </mat-option>

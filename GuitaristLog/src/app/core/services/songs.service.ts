@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { UserBankService } from './user-bank.service';
-import { Song } from 'src/app/models/song.model';
 import { Observable } from 'rxjs';
-import { filter, map, tap, concatMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+import { Song } from 'src/app/models/song.model';
+import { AbstractFireService } from '../../models/abstractFireService';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SongsService {
+export class SongsService extends AbstractFireService {
   private API_URL = '/songs';
 
-  constructor(private db: AngularFireDatabase,
-              private userBankService: UserBankService) { }
+  constructor(private db: AngularFireDatabase) {
+    super();
+  }
 
-  getSongs(): Observable<Song []> {
+  getSongs(): Observable<Song[]> {
     return this.db.list<Song>(this.API_URL).snapshotChanges().pipe(
       map(response => response.map(song => this.assignKey(song)))
     );
@@ -36,10 +37,7 @@ export class SongsService {
   getSearchedSongs(input: string): Observable<Song[]> {
     return this.db.list<Song>(this.API_URL).snapshotChanges().pipe(
       map(response => response.map(song => this.assignKey(song))),
-      map(songs => songs
-        .filter(song => (song.name.toLowerCase()).includes((input + '').toLowerCase())
-        && song.public)
-        )
+      map(songs => songs.filter(song => this.filterSongs(input, song)))
     );
   }
 
@@ -55,7 +53,11 @@ export class SongsService {
     return this.db.object<Song>(`${this.API_URL}/${key}`).remove();
   }
 
-  private assignKey(song): Song{
-    return { ...song.payload.val(), key: song.key };
+  private filterSongs(input: string, song: Song) {
+    return input.length > 2 ?
+      song.public &&
+      song.name.substr(0, input.length).toLowerCase()
+        .includes((input + '').toLowerCase())
+      : null;
   }
 }
