@@ -11,6 +11,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS, MatMomentDateAdapterOptions } from '@angular/material-moment-adapter';
 import { MatDateFormats, MAT_DATE_FORMATS } from '@angular/material/core';
@@ -62,7 +63,8 @@ const MATERIAL_MODULES = [
   MatSidenavModule,
   MatCardModule,
   MatDividerModule,
-  MatSlideToggleModule
+  MatSlideToggleModule,
+  MatAutocompleteModule
 ];
 
 

@@ -1,12 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { SongsService } from 'src/app/core/services/songs.service';
 import { UserBankService } from 'src/app/core/services/user-bank.service';
 import { Song } from 'src/app/models/song.model';
-import { switchMap, tap, concat } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { UserBank } from 'src/app/models/user-bank.model';
 
 @Component({
@@ -67,10 +66,6 @@ export class NewSongComponent implements OnInit{
 
   private onCreatingFailure(error) {
     this.toast.open(error.message, '', {panelClass: 'toast-error'});
-  }
-
-  private navigateToNewSong(key: string) {
-    this.router.navigate(['/dashboard/songs', key]);
   }
 
   close() {

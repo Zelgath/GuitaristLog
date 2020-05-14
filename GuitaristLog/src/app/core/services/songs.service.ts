@@ -33,6 +33,16 @@ export class SongsService {
     );
   }
 
+  getSearchedSongs(input: string): Observable<Song[]> {
+    return this.db.list<Song>(this.API_URL).snapshotChanges().pipe(
+      map(response => response.map(song => this.assignKey(song))),
+      map(songs => songs
+        .filter(song => (song.name.toLowerCase()).includes((input + '').toLowerCase())
+        && song.public)
+        )
+    );
+  }
+
   addSong(song: Song) {
     return this.db.list<Song>(this.API_URL).push(song);
   }
